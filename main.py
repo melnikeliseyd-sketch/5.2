@@ -1,0 +1,68 @@
+def start():
+    print("Вы просыпаетесь в тёмной комнате.")
+    print("Что вы будете делать?")
+    print("1 - Осмотреться вокруг")
+    print("2 - Попробовать открыть дверь")
+    choice = input("> ")
+
+    if choice == "1":
+        look_around()
+    elif choice == "2":
+        locked_door()
+    else:
+        print("Неверный ввод. Попробуйте снова.\n")
+        start()
+
+def look_around():
+    print("\nВы видите стол, на нём лежит ключ.")
+    print("1 - Взять ключ")
+    print("2 - Игнорировать и вернуться к двери")
+    choice = input("> ")
+
+    if choice == "1":
+        print("\nВы берёте ключ. Может, он подойдёт к двери.")
+        have_key()
+    elif choice == "2":
+        locked_door()
+    else:
+        print("Неверный ввод.\n")
+        look_around()
+
+def locked_door():
+    print("\nВы подходите к двери. Она заперта.")
+    print("1 - Вернуться и поискать что-то в комнате")
+    print("2 - Постучать в дверь")
+    choice = input("> ")
+
+    if choice == "1":
+        look_around()
+    elif choice == "2":
+        print("\nНикто не отвечает... Вы один.")
+        locked_door()
+    else:
+        print("Неверный ввод.\n")
+        locked_door()
+
+def have_key():
+    print("\nВы стоите перед дверью с ключом в руках.")
+    print("1 - Попробовать открыть дверь ключом")
+    print("2 - Подождать немного")
+    choice = input("> ")
+
+    if choice == "1":
+        win()
+    elif choice == "2":
+        print("\nВы ждёте... но ничего не происходит.")
+        have_key()
+    else:
+        print("Неверный ввод.\n")
+        have_key()
+
+def win():
+    print("\nВы вставляете ключ в замок и дверь открывается.")
+    print("вы на свободе!")
+    print("Поздравляем, вы прошли квест! ")
+
+# Start game
+if __name__ == "__main__":
+    start()
